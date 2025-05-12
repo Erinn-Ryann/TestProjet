@@ -1,9 +1,139 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
-    background-color: #f0f0f0;
+:root {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --primary-color: #646cff;
+    --card-bg: #fff;
 }
-h1 {
-    color: #2c3e50;
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --primary-color: #535bf2;
+    --card-bg: #242424;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.title span {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.title span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.title:hover span::after {
+    transform: scaleX(1);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+#counter {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: #747bff;
+}
+
+/* Switch Mode Sombre */
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
