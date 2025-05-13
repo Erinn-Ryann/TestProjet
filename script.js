@@ -1,15 +1,47 @@
-// Compteur interactif
-const btn = document.getElementById('btn');
-const counter = document.getElementById('counter');
-let count = 0;
+// Carrousel automatique
+let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
 
-btn.addEventListener('click', () => {
-    count++;
-    counter.textContent = `Compteur : ${count}`;
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % totalItems;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    document.querySelector('.carousel-inner').style.transform = 
+        `translateX(-${currentIndex * 100}%)`;
+}
+
+// Navigation manuelle
+document.querySelector('.next').addEventListener('click', showNextImage);
+document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    updateCarousel();
 });
 
-// Mode Sombre/Clair
-const themeSwitch = document.getElementById('theme-switch');
-themeSwitch.addEventListener('change', () => {
-    document.body.setAttribute('data-theme', themeSwitch.checked ? 'dark' : 'light');
+// Auto-défilement toutes les 3 secondes
+setInterval(showNextImage, 3000);
+
+// Formulaire
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Message envoyé à la licorne postale ! 🦄');
+    e.target.reset();
+});
+
+// Compteur magique
+let count = 0;
+document.getElementById('btn').addEventListener('click', () => {
+    count++;
+    document.getElementById('counter').textContent = `Compteur : ${count}`;
+    
+    // Petit effet visuel
+    this.style.transform = 'scale(1.1)';
+    setTimeout(() => this.style.transform = 'scale(1)', 200);
+});
+
+// Mode sombre/clair
+document.getElementById('theme-switch').addEventListener('change', function() {
+    document.body.setAttribute('data-theme', this.checked ? 'dark' : 'light');
 });
