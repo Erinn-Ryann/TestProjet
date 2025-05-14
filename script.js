@@ -1,27 +1,27 @@
 // Carrousel automatique
-let currentIndex = 0;
-const items = document.querySelectorAll('.carousel-item');
-const totalItems = items.length;
+//let currentIndex = 0;
+//const items = document.querySelectorAll('.carousel-item');
+//const totalItems = items.length;
 
-function showNextImage() {
-    currentIndex = (currentIndex + 1) % totalItems;
-    updateCarousel();
-}
+//function showNextImage() {
+  //  currentIndex = (currentIndex + 1) % totalItems;
+   // updateCarousel();
+//}
 
-function updateCarousel() {
-    document.querySelector('.carousel-inner').style.transform = 
-        `translateX(-${currentIndex * 100}%)`;
-}
+//function updateCarousel() {
+  //  document.querySelector('.carousel-inner').style.transform = 
+    //    `translateX(-${currentIndex * 100}%)`;
+//}
 
 // Navigation manuelle
-document.querySelector('.next').addEventListener('click', showNextImage);
-document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-    updateCarousel();
-});
+//document.querySelector('.next').addEventListener('click', showNextImage);
+//document.querySelector('.prev').addEventListener('click', () => {
+  //  currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    //updateCarousel();
+//});
 
 // Auto-défilement toutes les 3 secondes
-setInterval(showNextImage, 3000);
+//setInterval(showNextImage, 3000);
 
 // Formulaire
 document.getElementById('contactForm').addEventListener('submit', (e) => {
